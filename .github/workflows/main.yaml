@@ -29,6 +29,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade platformio
     - name: Install library dependencies
-      run: pio lib -g install "paulstoffregen/Time@^1.6"
+      run: pio pkg install
     - name: Run PlatformIO
-      run: pio ci --lib="." --board=esp-wrover-kit
+      run: pio ci src/ --board=esp-wrover-kit
