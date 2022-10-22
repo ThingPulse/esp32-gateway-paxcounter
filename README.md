@@ -1,4 +1,4 @@
-!(Master Build)[https://github.com/ThingPulse/esp32-gateway-paxcounter/actions/workflows/main.yaml/badge.svg]
+![Master Build](https://github.com/ThingPulse/esp32-gateway-paxcounter/actions/workflows/main.yaml/badge.svg)
 
 # ThingPulse ESPGateway Ethernet PAX counter
 
