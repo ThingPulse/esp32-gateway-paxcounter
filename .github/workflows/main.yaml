@@ -31,4 +31,4 @@ jobs:
     - name: Install library dependencies
       run: pio pkg install
     - name: Run PlatformIO
-      run: pio ci src/ --board=esp-wrover-kit
+      run: pio run -e esp-wrover-kit
