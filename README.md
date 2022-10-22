@@ -1,3 +1,5 @@
+!(Master Build)[https://github.com/ThingPulse/esp32-gateway-paxcounter/actions/workflows/main.yaml/badge.svg]
+
 # ThingPulse ESPGateway Ethernet PAX counter
 
 The ThingPulse ESPGateway Ethernet is a versatile device that comes with one ESP32-WROVER-IB module, 
