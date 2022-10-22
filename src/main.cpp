@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <HTTPClient.h>
-//#include "monitor.h"
 //#include "mqtt.h"
 #include "pax.h"
 #include "lora.h"
@@ -16,7 +15,6 @@ void process_count(void) {
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(115200);
-  //wifi_monitor_init();
   //mqttInit();
   initStatusLeds();
   updateLed(0, CRGB::Red);
