@@ -15,6 +15,8 @@ devices to meter passenger flows in realtime. To count the devices it uses the
 libpax library which is the core of the 
 [ESP32-Paxcounter](https://github.com/cyberman54/ESP32-Paxcounter) project.
 
+![Pax Counter Chart in Grafana](https://thingpulse.com/wp-content/uploads/2021/11/PaxCounter-Grafana.png)
+
 The measured data can be transmitted for reporting by one of two backhaul channels:
 
 ### Ethernet
