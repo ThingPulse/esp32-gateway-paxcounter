@@ -6,6 +6,7 @@ extern "C" {
 	#include "freertos/timers.h"
 }
 #include <AsyncMqttClient.h>
+#include <ArduinoJson.h>
 
 #include "settings.h"
 
@@ -119,6 +120,20 @@ void onMqttPublish(uint16_t packetId) {
   Serial.println("Publish acknowledged.");
   Serial.print("  packetId: ");
   Serial.println(packetId);
+}
+
+void sendMqttMessage(uint8_t paxCount, uint8_t wifiCount, uint8_t bleCount) {
+  if (mqttClient.connected()) {
+    DynamicJsonDocument  doc(50);
+    doc["pax"] = paxCount;
+    doc["wifi"] = wifiCount;
+    doc["ble"] = bleCount;
+    String message;
+    serializeJson(doc, message);
+    publishMessage(message);
+  } else {
+    Serial.println("MQTT is not connected. Discarding message");
+  }
 }
 
 void mqttInit() {

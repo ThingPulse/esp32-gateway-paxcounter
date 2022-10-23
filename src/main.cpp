@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <HTTPClient.h>
-//#include "mqtt.h"
+#include "mqtt.h"
 #include "pax.h"
 #include "lora.h"
 #include "led.h"
@@ -15,7 +15,7 @@ void process_count(void) {
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(115200);
-  //mqttInit();
+  mqttInit();
   initStatusLeds();
   updateLed(0, CRGB::Red);
   updateLed(1, CRGB::Red);
@@ -31,6 +31,7 @@ void loop() {
     isNewDataAvailable = false;
 
     sendLoraMessage(count_from_libpax.pax, count_from_libpax.wifi_count, count_from_libpax.ble_count);
+    sendMqttMessage(count_from_libpax.pax, count_from_libpax.wifi_count, count_from_libpax.ble_count);
     updateLed(0, CRGB::Green);
   }
 

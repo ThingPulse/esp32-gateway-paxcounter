@@ -7,7 +7,7 @@
 
 Disk91_LoRaE5 lorae5((uint16_t)LORA_DEFAULT_AT_TIMEOUT_MILLIS, &Serial);
 
-
+boolean isLoraE5Present = false;
 
 void initLora() {
 
@@ -28,13 +28,15 @@ void initLora() {
           appkey
        ) ){
     Serial.println("LoRa E5 Setup Failed");  
+    return;
   } else {
     Serial.println("LoRa E5 Setup succeeded");  
   }
-
+  isLoraE5Present = true;
 }
 
 void sendLoraMessage(uint8_t paxCount, uint8_t wifiCount, uint8_t bleCount) {
+  if (isLoraE5Present) {
     printf("pax: %d; %d; %d;\n", paxCount, wifiCount, bleCount);
     uint8_t data[] = { 0x00, paxCount, 0x00, wifiCount, 0x00, bleCount }; 
   
@@ -58,5 +60,8 @@ void sendLoraMessage(uint8_t paxCount, uint8_t wifiCount, uint8_t bleCount) {
     } else {
         Serial.println("Sending message failed...");
     }
+  } else {
+    Serial.println("LoraE5 is not present or failed to initialize. Discarding message");
+  }
 
 }
